@@ -13,6 +13,8 @@
     kokaosApp.use(bodyParser.urlencoded({extended: false}));
     kokaosApp.use(express.static(path.join(__dirname, 'kokaos/public')));
 
+    require('./kokaos/routes')(kokaosApp);
+
     iunaApp.use(bodyParser.json());
     iunaApp.use(bodyParser.urlencoded({extended: false}));
     iunaApp.use(express.static(path.join(__dirname, 'iuna/public')));
@@ -38,6 +40,7 @@
             });
         });
     }
+
     if (iunaApp.get('env') === 'development') {
         iunaApp.use(function (err, req, res, next) {
             res.status(err.status || 500);
