@@ -7,8 +7,11 @@
         return {
             getAll: function(req, res) {
 
-                administratorRepository.getAll();
-                res.send();
+                administratorRepository.getAll()
+                    .then(function(result) {
+
+                        res.send(result);
+                    });
             }
         };
     };

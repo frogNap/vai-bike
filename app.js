@@ -3,69 +3,23 @@
     'use strict';
 
     var express = require('express');
-    var path = require('path');
-    var bodyParser = require('body-parser');
+    var mysql = require('mysql');
 
     var kokaosApp = express();
     var iunaApp = express();
 
-    kokaosApp.use(bodyParser.json());
-    kokaosApp.use(bodyParser.urlencoded({extended: false}));
-    kokaosApp.use(express.static(path.join(__dirname, 'kokaos/public')));
-
-    require('./kokaos/routes')(kokaosApp);
-
-    iunaApp.use(bodyParser.json());
-    iunaApp.use(bodyParser.urlencoded({extended: false}));
-    iunaApp.use(express.static(path.join(__dirname, 'iuna/public')));
-
-    kokaosApp.use(function (req, res, next) {
-        var err = new Error('Not Found');
-        err.status = 404;
-        next(err);
+    var pool  = mysql.createPool({
+        connectionLimit : 30,
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'app',
+        password : process.env.DB_PASS || '',
+        port : process.env.DB_PORT || 3306,
+        database: process.env.DB_NAME || 'vai_bike'
     });
 
-    iunaApp.use(function (req, res, next) {
-        var err = new Error('Not Found 1');
-        err.status = 404;
-        next(err);
-    });
-
-    if (kokaosApp.get('env') === 'development') {
-        kokaosApp.use(function (err, req, res, next) {
-            res.status(err.status || 500);
-            res.send({
-                message: err.message,
-                error: err
-            });
-        });
-    }
-
-    if (iunaApp.get('env') === 'development') {
-        iunaApp.use(function (err, req, res, next) {
-            res.status(err.status || 500);
-            res.send({
-                message: err.message,
-                error: err
-            });
-        });
-    }
-
-    kokaosApp.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.send({
-            message: err.message,
-            error: {}
-        });
-    });
-
-    iunaApp.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.send({
-            message: err.message,
-            error: {}
-        });
-    });
+    var dbHandler = require('./dbHandler')(pool);
+    require('./kokaos/app_start')(kokaosApp, dbHandler);
+    require('./iuna/app_start')(iunaApp, dbHandler);
 
     kokaosApp.listen(3000, function () {
         console.log('Sup nerd! Kokaos here, i\'m at port %s --- See ya\'', 3000);

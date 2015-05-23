@@ -2,23 +2,22 @@
 
     'use strict';
 
-    var dbHandler = require('../dbHandler');
+    module.exports = function(dbHandler) {
 
-    module.exports = {
+        return {
+            getAll: function() {
 
-        getAll: function() {
+                return dbHandler.queryFromPool(function(deferred, connection) {
 
-            dbHandler.getConnection(function(connection) {
+                    connection.query('SELECT * FROM administrador', null, function(queryError, rows) {
 
-                connection.request();
-                request.query('select * from administrator', function(err, recordSet) {
-
-                    if(err)
-                        console.log(err);
-
-                    console.log(recordSet);
+                        if(queryError)
+                            deferred.reject();
+                        else
+                            deferred.resolve(rows);
+                    });
                 });
-            })
-        }
+            }
+        };
     };
 })();

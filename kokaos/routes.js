@@ -2,10 +2,12 @@
 
     'use strict';
 
-    var administratorRepository = require('../zanos/repository/administratorRepository');
-    var administratorController = require('./service/administratorController')(administratorRepository);
 
-    module.exports = function(app) {
+
+    module.exports = function(app, dbHandler) {
+
+        var administratorRepository = require('../zanos/repository/administratorRepository')(dbHandler);
+        var administratorController = require('./service/administratorController')(administratorRepository);
 
         app.get('/administrator', administratorController.getAll);
     };
