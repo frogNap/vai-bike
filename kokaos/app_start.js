@@ -12,7 +12,7 @@
         app.use(bodyParser.urlencoded({extended: false}));
         app.use(express.static(path.join(__dirname, './public')));
 
-        require('./routes')(app, dbHandler);
+        require('./api-mapping')(app, dbHandler);
 
         app.use(function (req, res, next) {
             var err = new Error('Not Found');
