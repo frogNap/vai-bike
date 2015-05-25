@@ -4,5 +4,5 @@
 
     angular.module('kokaosApp.controllers', []);
 
-    var kokaosApp = angular.module('kokaosApp', ['kokaosApp.controllers', 'ngRoute']);
+    var kokaosApp = angular.module('kokaosApp', ['kokaosApp.controllers', 'ngRoute', 'ui.bootstrap']);
 })();

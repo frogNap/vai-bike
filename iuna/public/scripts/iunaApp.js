@@ -4,5 +4,5 @@
 
     angular.module('iunaApp.controllers', []);
 
-    var iunaApp = angular.module('iunaApp', ['iunaApp.controllers', 'ngRoute']);
+    var iunaApp = angular.module('iunaApp', ['iunaApp.controllers', 'ngRoute', 'ui.bootstrap']);
 })();
