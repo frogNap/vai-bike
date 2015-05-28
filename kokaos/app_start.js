@@ -3,16 +3,63 @@
     'use strict';
 
     var express = require('express');
+    var session = require('express-session');
     var path = require('path');
     var bodyParser = require('body-parser');
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
 
     module.exports = function(app, dbHandler) {
+
+        var administratorRepository = require('../zanos/repository/administratorRepository')(dbHandler);
+
+        passport.serializeUser(function(user, done) {
+            done(null, user.id);
+        });
+
+        passport.deserializeUser(function(id, done) {
+            administratorRepository.getById(id)
+                .then(function(user) {
+
+                    done(null, user);
+                }, function(err) {
+
+                    done(err);
+                });
+        });
+
+        passport.use(new LocalStrategy(function (username, password, done) {
+
+            administratorRepository.getByUsername(username)
+                .then(function(user) {
+
+                    if (!user)
+                        done(null, false, { message: 'Incorrect username.' });
+
+                    if (user.senha != password)
+                        done(null, false, { message: 'Incorrect password.' });
+
+                    done(null, user);
+                }, function(err) {
+
+                    done(err);
+                });
+        }));
 
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({extended: false}));
         app.use(express.static(path.join(__dirname, './public')));
+        app.use(session({
+            secret: 'keyboard cat',
+            resave: false,
+            saveUninitialized: false,
+            cookie: { secure: false }
+        }));
+        app.use(passport.initialize());
+        app.use(passport.session());
 
         require('./api-mapping')(app, dbHandler);
+
 
         app.use(function (req, res, next) {
             var err = new Error('Not Found');
