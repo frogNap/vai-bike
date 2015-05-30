@@ -9,9 +9,10 @@
 
         return {
             getAll: function() {
-                return $http.get(BASE_API_ADDRESS + '/station').success(function(data,status){
-                    $scope.stations = data;
-                });}
+                return $http.get(BASE_API_ADDRESS + '/station').
+                    success(function(data,status,headers,config){
+                        return data;
+                    });}
         };
     }
 
