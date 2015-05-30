@@ -5,13 +5,11 @@
 
     'use strict';
 
-    function stationCtrl($scope) {
+    function stationCtrl($scope,StationService) {
 
         $scope.stationName = 'Estação';
 
-        $scope.stations = function() {
-            StationService.getAll();
-        };
+        $scope.stations = StationService.getAll();
 
     }
 
