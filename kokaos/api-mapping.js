@@ -2,17 +2,14 @@
 
     'use strict';
 
-    var passport = require('passport');
-
-    module.exports = function(app, dbHandler) {
+    module.exports = function(app, dbHandler, passport) {
 
         var administratorRepository = require('../zanos/repository/administratorRepository')(dbHandler);
         var administratorController = require('./service/administratorController')(administratorRepository);
 
-        app.post('/login', passport.authenticate('local', {
-            successRedirect: '/',
-            failureRedirect: '/login'
-        }));
+        app.post('/login', passport.authenticate('local'), function(req, res) {
+            res.send('damn!');
+        });
 
         function ensureAuthenticated(req, res, next) {
 

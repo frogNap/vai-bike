@@ -4,13 +4,17 @@
 
     function routesConfig ($routeProvider) {
 
-        $routeProvider.
-            when('/dashboard', {
+        $routeProvider
+            .when('/dashboard', {
                 templateUrl: '/templates/views/dashboard.html',
                 controller: 'DashboardController'
             })
+            .when('/login', {
+                templateUrl: '/templates/views/login.html',
+                controller: 'LoginController'
+            })
             .otherwise({
-                redirectTo: 'dashboard'
+                redirectTo: '/login'
             });
     }
 
