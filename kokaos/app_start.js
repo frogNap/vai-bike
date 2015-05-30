@@ -8,6 +8,7 @@
     var bodyParser = require('body-parser');
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
+    var cookieParser = require('cookie-parser')
 
     module.exports = function(app, dbHandler) {
 
@@ -34,32 +35,33 @@
                 .then(function(user) {
 
                     if (!user)
-                        done(null, false, { message: 'Incorrect username.' });
+                        return done(null, false, { message: 'Incorrect username.' });
 
                     if (user.senha != password)
-                        done(null, false, { message: 'Incorrect password.' });
+                        return done(null, false, { message: 'Incorrect password.' });
 
                     done(null, user);
                 }, function(err) {
 
-                    done(err);
+                    return done(err);
                 });
         }));
 
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({extended: false}));
         app.use(express.static(path.join(__dirname, './public')));
+        app.use(cookieParser());
         app.use(session({
-            secret: 'keyboard cat',
+            secret: 'flying monkey',
             resave: false,
-            saveUninitialized: false,
-            cookie: { secure: false }
+            saveUninitialized: false
         }));
         app.use(passport.initialize());
         app.use(passport.session());
 
-        require('./api-mapping')(app, dbHandler);
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({extended: false}));
 
+
+        require('./api-mapping')(app, dbHandler, passport);
 
         app.use(function (req, res, next) {
             var err = new Error('Not Found');

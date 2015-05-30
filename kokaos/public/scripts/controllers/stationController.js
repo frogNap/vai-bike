@@ -8,7 +8,7 @@
     function stationCtrl($scope) {
 
         $scope.stationName = 'Estação';
-        $scope.stations =
+
     }
 
     angular.module('kokaosApp.controllers').controller('StationController', stationCtrl);
