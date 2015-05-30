@@ -2,7 +2,7 @@
 
     'use strict';
 
-    function loginCtrl($scope, $cookies, LoginService) {
+    function loginCtrl($scope, LoginService) {
 
         $scope.credentials = {
             username: undefined,
@@ -13,6 +13,7 @@
 
             LoginService.attemptLogin($scope.credentials)
                 .success(function() {
+
 
                 });
         };
