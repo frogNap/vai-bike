@@ -9,6 +9,14 @@
                 templateUrl: '/templates/views/dashboard.html',
                 controller: 'DashboardController'
             })
+            .when('/station', {
+                templateUrl: '/templates/views/station.html',
+                controller: 'StationController'
+            })
+            .when('/bike', {
+                templateUrl: '/templates/views/bikes.html',
+                controller: 'BikeController'
+            })
             .otherwise({
                 redirectTo: 'dashboard'
             });
