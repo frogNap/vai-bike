@@ -9,6 +9,10 @@
 
         $scope.stationName = 'Estação';
 
+        $scope.stations = function() {
+            StationService.getAll();
+        };
+
     }
 
     angular.module('kokaosApp.controllers').controller('StationController', stationCtrl);
