@@ -2,27 +2,52 @@
 
     'use strict';
 
+    function verifyLogin ($q, $location, LoginService, AlertService) {
+
+        var deferred = $q.defer();
+
+        LoginService.verifyLogin()
+            .success(function(user){
+
+                if (user !== '0') {
+
+                    deferred.resolve();
+                } else {
+                    AlertService.addError('\u00c9 necess\u00e1rio efetuar o login!');
+                    deferred.reject();
+                    $location.url('/login');
+                }
+            });
+
+        return deferred.promise;
+    }
+
     function routesConfig ($routeProvider) {
+
+
 
         $routeProvider
             .when('/dashboard', {
                 templateUrl: '/templates/views/dashboard.html',
-                controller: 'DashboardController'
+                controller: 'DashboardController',
+                resolve: { loggedIn: verifyLogin }
             })
             .when('/station', {
                 templateUrl: '/templates/views/station.html',
-                controller: 'StationController'
+                controller: 'StationController',
+                resolve: { loggedIn: verifyLogin }
             })
             .when('/bike', {
                 templateUrl: '/templates/views/bikes.html',
-                controller: 'BikeController'
+                controller: 'BikeController',
+                resolve: { loggedIn: verifyLogin }
             })
             .when('/login', {
                 templateUrl: '/templates/views/login.html',
                 controller: 'LoginController'
             })
             .otherwise({
-                redirectTo: '/login'
+                redirectTo: '/dashboard'
             });
     }
 

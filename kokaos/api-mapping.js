@@ -13,7 +13,7 @@
         router.route('/login')
             .post(passport.authenticate('local'), function(req, res) {
                 delete req.user.senha;
-                res.json(req.user);
+                res.send(req.user);
             });
 
         router.route('/logout')
@@ -22,12 +22,22 @@
                 res.redirect('/');
             });
 
+        router.route('/loggedIn')
+            .get(function(req, res) {
+
+                if(req.isAuthenticated()) {
+                    delete req.user.senha;
+                    res.send(req.user);
+                } else {
+                    res.send('0');
+                }
+            });
+
         function ensureAuthenticated(req, res, next) {
 
-            return next();
-            //if (req.isAuthenticated()) { return next(); }
-            //req.session.error = 'Please sign in!';
-            //res.redirect('/#/login');
+            if (req.isAuthenticated()) { return next(); }
+            req.session.error = 'Você precisa se logar primeiro ;)';
+            res.redirect('/');
         }
 
         router.route('/administrator')
