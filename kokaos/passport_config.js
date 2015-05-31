@@ -3,6 +3,7 @@
     'use strict';
 
     var LocalStrategy = require('passport-local').Strategy;
+    var bcrypt = require('bcrypt-nodejs');
 
     module.exports = function(passport, dbHandler) {
 
@@ -23,19 +24,27 @@
 
         passport.use(new LocalStrategy(function (username, password, done) {
 
+
+
             administratorRepository.getByUsername(username)
                 .then(function(user) {
 
                     if (!user)
-                        return done(null, false, { message: 'Incorrect username.' });
+                        done(null, false, { message: 'Incorrect username.' });
 
-                    if (user.senha != password)
-                        return done(null, false, { message: 'Incorrect password.' });
+                    bcrypt.compare(password, user.senha, function(err, res) {
+                        if(err)
+                            done(err);
 
-                    done(null, user);
+                        if(!res)
+                            done(null, false, { message: 'Incorrect password.' });
+
+                        done(null, user);
+                    });
+
                 }, function(err) {
 
-                    return done(err);
+                    done(err);
                 });
         }));
     };
