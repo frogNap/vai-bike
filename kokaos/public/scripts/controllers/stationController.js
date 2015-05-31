@@ -1,6 +1,3 @@
-/**
- * Created by grodriguesb on 27/05/2015.
- */
 (function() {
 
     'use strict';
@@ -8,9 +5,12 @@
     function stationCtrl($scope,StationService) {
 
         $scope.stationName = 'Estação';
+        $scope.stations = [];
 
-        $scope.stations = StationService.getAll();
+        StationService.getAll().then(function(result) {
 
+            $scope.stations = result.data;
+        });
     }
 
     angular.module('kokaosApp.controllers').controller('StationController', stationCtrl);

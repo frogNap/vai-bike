@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html>
-<body ng-app="myApp" ng-controller="stationCtrl">
-
 <table class="table table-striped">
-    <thead><tr>
-        <th>Edit</th>
-        <th>Id</th>
-        <th>Descrição</th>
-    </tr></thead>
-    <tbody><tr ng-repeat="station in stations">
-        <td>
-            <button class="btn">
-                <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
-            </button>
-        </td>
-        <td>{{ station.id }}</td>
-        <td>{{ station.descricao }}</td>
-    </tr></tbody>
+    <thead>
+        <tr>
+            <th>Edit</th>
+            <th>Id</th>
+            <th>Descri&ccedil;&atilde;o</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="station in stations">
+            <td>
+                <button class="btn">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                </button>
+            </td>
+            <td>{{ station.id }}</td>
+            <td>{{ station.descricao }}</td>
+        </tr>
+    </tbody>
 </table>
-
-<script src = "stationController.js"></script>
-</body>
-</html>
