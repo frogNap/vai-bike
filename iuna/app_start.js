@@ -13,29 +13,21 @@
         app.use(express.static(path.join(__dirname, './public')));
 
         app.use(function (req, res, next) {
-            var err = new Error('Not Found 1');
+            var err = new Error('Not Found');
             err.status = 404;
             next(err);
         });
 
-        if (app.get('env') === 'development') {
-
-            app.use(function (err, req, res) {
-                res.status(err.status || 500);
-                res.send({
-                    message: err.message,
-                    error: err
-                });
+        app.use(function (err, req, res) {
+            res.status(err.status || 500);
+            res.send({
+                message: err.message,
+                error: err
             });
-        } else {
+        });
 
-            app.use(function (err, req, res) {
-                res.status(err.status || 500);
-                res.send({
-                    message: err.message,
-                    error: {}
-                });
-            });
-        }
+        app.listen(3010, function () {
+            console.log('Sup son! Iuna here, i\'m at port %s --- Go check me out ;)', 3010);
+        });
     };
 })();
