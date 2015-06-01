@@ -1,16 +1,16 @@
-/**
- * Created by grodriguesb on 27/05/2015.
- */
 (function() {
 
     'use strict';
 
     function stationCtrl($scope,StationService) {
 
-        $scope.stations = StationService.getAll();
-
         $scope.stationName = 'Estação';
+        $scope.stations = [];
 
+        StationService.getAll().then(function(result) {
+
+            $scope.stations = result.data;
+        });
     }
 
     angular.module('kokaosApp.controllers').controller('StationController', stationCtrl);

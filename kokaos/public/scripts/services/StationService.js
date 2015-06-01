@@ -1,6 +1,3 @@
-/**
- * Created by grodriguesb on 30/05/2015.
- */
 (function() {
 
     'use strict';
@@ -9,10 +6,8 @@
 
         return {
             getAll: function() {
-                return $http.get(BASE_API_ADDRESS + '/station').
-                    success(function(data,status,headers,config){
-                        return data;
-                    });}
+                return $http.get(BASE_API_ADDRESS + '/station');
+            }
         };
     }
 

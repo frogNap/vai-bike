@@ -8,6 +8,14 @@
             attemptLogin: function(credentials) {
 
                 return $http.post(BASE_API_ADDRESS + '/login', credentials);
+            },
+            verifyLogin: function() {
+
+                return $http.get(BASE_API_ADDRESS + '/loggedIn');
+            },
+            logout: function() {
+
+                return $http.get(BASE_API_ADDRESS + '/logout');
             }
         };
     }

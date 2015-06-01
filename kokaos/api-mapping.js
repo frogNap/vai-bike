@@ -2,26 +2,48 @@
 
     'use strict';
 
-    module.exports = function(app, dbHandler, passport) {
+    module.exports = function(router, dbHandler, passport) {
 
         var administratorRepository = require('../zanos/repository/administratorRepository')(dbHandler);
-        var administratorController = require('./service/administratorController')(administratorRepository);
         var stationRepository = require('../zanos/repository/stationRepository')(dbHandler);
+
+        var administratorController = require('./service/administratorController')(administratorRepository);
         var stationController = require('./service/stationController')(stationRepository);
 
-        app.post('/login', passport.authenticate('local'), function(req, res) {
-            res.send('damn!');
-        });
+        router.route('/login')
+            .post(passport.authenticate('local'), function(req, res) {
+                delete req.user.senha;
+                res.send(req.user);
+            });
+
+        router.route('/logout')
+            .get(function(req, res){
+                req.logout();
+                res.redirect('/');
+            });
+
+        router.route('/loggedIn')
+            .get(function(req, res) {
+
+                if(req.isAuthenticated()) {
+                    delete req.user.senha;
+                    res.send(req.user);
+                } else {
+                    res.send('0');
+                }
+            });
 
         function ensureAuthenticated(req, res, next) {
 
-            return next();
-            //if (req.isAuthenticated()) { return next(); }
-            //req.session.error = 'Please sign in!';
-            //res.redirect('/login');
+            if (req.isAuthenticated()) { return next(); }
+            req.session.error = 'Você precisa se logar primeiro ;)';
+            res.redirect('/');
         }
 
-        app.get('/administrator', ensureAuthenticated, administratorController.getAll);
-        app.get('/station', ensureAuthenticated, stationController.getAll);
+        router.route('/administrator')
+            .get(ensureAuthenticated, administratorController.getAll);
+
+        router.route('/station')
+            .get(ensureAuthenticated, stationController.getAll);
     };
 })();
