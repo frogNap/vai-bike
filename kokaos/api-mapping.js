@@ -6,9 +6,15 @@
 
         var administratorRepository = require('../zanos/repository/administratorRepository')(dbHandler);
         var stationRepository = require('../zanos/repository/stationRepository')(dbHandler);
+        var bikeRepository = require('../zanos/repository/bikeRepository')(dbHandler);
+        var packageRepository = require('../zanos/repository/packageRepository')(dbHandler);
+        var promotionRepository = require('../zanos/repository/promotionRepository')(dbHandler);
 
         var administratorController = require('./service/administratorController')(administratorRepository);
         var stationController = require('./service/stationController')(stationRepository);
+        var bikeController = require('./service/bikeController')(bikeRepository);
+        var packageController = require('./service/packageController')(packageRepository);
+        var promotionController = require('./service/promotionController')(promotionRepository);
 
         router.route('/login')
             .post(passport.authenticate('local'), function(req, res) {
@@ -45,5 +51,14 @@
 
         router.route('/station')
             .get(ensureAuthenticated, stationController.getAll);
+
+        router.route('/bike')
+            .get(ensureAuthenticated, bikeController.getAll);
+
+        router.route('/promotion')
+            .get(ensureAuthenticated, promotionController.getAll);
+
+        router.route('/package')
+            .get(ensureAuthenticated, packageController.getAll);
     };
 })();

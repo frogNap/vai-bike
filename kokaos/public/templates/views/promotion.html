@@ -1,0 +1,21 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Edit</th>
+        <th>Descri&ccedil;&atilde;o</th>
+        <th>Desconto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="promotion in promotions">
+        <td>
+            <button class="btn">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+            </button>
+        </td>
+        <td style="display: none">{{ promotion.id }}</td>
+        <td>{{ promotion.descricao }}</td>
+        <td>{{ promotion.desconto }}</td>
+    </tr>
+    </tbody>
+</table>

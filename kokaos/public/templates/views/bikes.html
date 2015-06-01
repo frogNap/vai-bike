@@ -1,3 +1,27 @@
-<table>
-    <tr></tr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Edit</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Data aquisi&ccedil;&atilde;o</th>
+        <th>Quilometragem</th>
+        <th>Esta&ccedil;&atilde;o Atual</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="bike in bikes">
+        <td>
+            <button class="btn">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+            </button>
+        </td>
+        <td style="display: none;">{{ bike.id }}</td>
+        <td>{{ bike.marca }}</td>
+        <td>{{ bike.modelo }}</td>
+        <td>{{ bike.data_aquisicao }}</td>
+        <td>{{ bike.quilometragem }}</td>
+        <td>{{ bike.nome_estacao }}</td>
+    </tr>
+    </tbody>
 </table>

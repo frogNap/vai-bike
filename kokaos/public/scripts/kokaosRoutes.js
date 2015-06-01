@@ -42,6 +42,16 @@
                 controller: 'BikeController',
                 resolve: { loggedIn: verifyLogin }
             })
+            .when('/package', {
+                templateUrl: '/templates/views/package.html',
+                controller: 'PackageController',
+                resolve: { loggedIn: verifyLogin }
+            })
+            .when('/promotion', {
+                templateUrl: '/templates/views/promotion.html',
+                controller: 'PromotionController',
+                resolve: { loggedIn: verifyLogin }
+            })
             .when('/login', {
                 templateUrl: '/templates/views/login.html',
                 controller: 'LoginController'
