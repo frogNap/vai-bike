@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<body ng-app="myApp" ng-controller="stationCtrl">
-
 <table class="table table-striped">
     <thead><tr>
         <th>Edit</th>
         <th>Id</th>
-        <th>Descrição</th>
+        <th>Descricao</th>
     </tr></thead>
     <tbody><tr ng-repeat="station in stations">
         <td>
@@ -18,7 +14,3 @@
         <td>{{ station.descricao }}</td>
     </tr></tbody>
 </table>
-
-<script src = "stationController.js"></script>
-</body>
-</html>

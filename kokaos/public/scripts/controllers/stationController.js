@@ -7,9 +7,9 @@
 
     function stationCtrl($scope,StationService) {
 
-        $scope.stationName = 'Estação';
-
         $scope.stations = StationService.getAll();
+
+        $scope.stationName = 'Estação';
 
     }
 
