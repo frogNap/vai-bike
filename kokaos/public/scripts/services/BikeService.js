@@ -10,6 +10,9 @@
         return {
             getAll: function() {
                 return $http.get(BASE_API_ADDRESS + '/bike');
+            },
+            getById: function(){
+                return $http.get(BASE_API_ADDRESS + '/bike/id');
             }
         };
     }

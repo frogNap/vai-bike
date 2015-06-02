@@ -52,6 +52,9 @@
         router.route('/station')
             .get(ensureAuthenticated, stationController.getAll);
 
+        router.route('/station/{id}')
+            .get(ensureAuthenticated, stationController.getById);
+
         router.route('/bike')
             .get(ensureAuthenticated, bikeController.getAll);
 

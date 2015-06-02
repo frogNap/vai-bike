@@ -15,6 +15,12 @@
 
                         res.send(result);
                     });
+            },
+            getById: function(req,res){
+                stationRepository.getById(id)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

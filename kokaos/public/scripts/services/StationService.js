@@ -7,6 +7,9 @@
         return {
             getAll: function() {
                 return $http.get(BASE_API_ADDRESS + '/station');
+            },
+            getById: function() {
+                return $http.get(BASE_API_ADDRESS + '/station/{id}');
             }
         };
     }

@@ -2,18 +2,63 @@
     <thead>
         <tr>
             <th>Edit</th>
+            <th>Id</th>
             <th>Descri&ccedil;&atilde;o</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="station in stations">
             <td>
-                <button class="btn">
-                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                <button class="btn" data-toggle="modal" data-target="#modalUpdateStations" data-id="{{station.id}}">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Editar
                 </button>
             </td>
-            <td style="display: none;">{{ station.id }}</td>
+            <td>{{ station.id }}</td>
             <td>{{ station.descricao }}</td>
         </tr>
     </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="modalUpdateStations" tabindex="-1" role="dialog" aria-labelledby="modalUpdateStationsLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalUpdateStationsLabel">Alterar os dados da esta&ccedil;&atilde;o</h4>
+            </div>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Id</td>
+                            <td>
+                                <input type="text" class="form-control input-lg" id="txtId" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Descricao</td>
+                            <td>
+                                <input class="form-contol input-lg" type="text" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar altera&ccedil;&otilde;s</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $('#modalUpdateStations').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var recipient = button.data('id');
+            var modal = $(this);
+            modal.find('.modal-title').text('Alterar os dados da estacao ' + recipient);
+    })
+</script>
