@@ -1,6 +1,3 @@
-/**
- * Created by grodriguesb on 29/05/2015.
- */
 (function() {
 
     'use strict';
@@ -17,7 +14,7 @@
                     });
             },
             getById: function(req,res){
-                stationRepository.getById(id)
+                stationRepository.getById(req.params.id_station)
                     .then(function(result){
                         res.send(result);
                     });
