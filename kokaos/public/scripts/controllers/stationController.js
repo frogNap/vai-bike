@@ -6,13 +6,14 @@
 
         $scope.stationName = 'Estação';
         $scope.stations = [];
-        $scope.station = [];
+        $scope.id_estacao = 0;
+        $scope.station = stationCtrl.getById(id_estacao);
 
         StationService.getAll().then(function(result) {
             $scope.stations = result.data;
         });
 
-        StationService.getById().then(function(result){
+        StationService.getById(id).then(function(result){
             $scope.station = result.data;
         });
     }

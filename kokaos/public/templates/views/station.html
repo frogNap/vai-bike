@@ -59,6 +59,7 @@
             var button = $(event.relatedTarget);
             var recipient = button.data('id');
             var modal = $(this);
+            station = stationService.getById(recipient);
             modal.find('.modal-title').text('Alterar os dados da estacao ' + recipient);
     })
 </script>

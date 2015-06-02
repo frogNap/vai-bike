@@ -8,8 +8,8 @@
             getAll: function() {
                 return $http.get(BASE_API_ADDRESS + '/station');
             },
-            getById: function() {
-                return $http.get(BASE_API_ADDRESS + '/station/{id}');
+            getById: function(id) {
+                return $http.get(BASE_API_ADDRESS + '/station/:id');
             }
         };
     }
