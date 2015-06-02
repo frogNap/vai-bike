@@ -24,8 +24,6 @@
 
     function routesConfig ($routeProvider) {
 
-
-
         $routeProvider
             .when('/dashboard', {
                 templateUrl: '/templates/views/dashboard.html',
@@ -33,7 +31,7 @@
                 resolve: { loggedIn: verifyLogin }
             })
             .when('/station', {
-                templateUrl: '/templates/views/station.html',
+                templateUrl: '/templates/views/station/station.html',
                 controller: 'StationController',
                 resolve: { loggedIn: verifyLogin }
             })

@@ -9,7 +9,7 @@
                 return $http.get(BASE_API_ADDRESS + '/station');
             },
             getById: function(id) {
-                return $http.get(BASE_API_ADDRESS + '/station/:id');
+                return $http.get(BASE_API_ADDRESS + '/station/' + id);
             }
         };
     }
