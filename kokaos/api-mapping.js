@@ -53,15 +53,28 @@
             .get(ensureAuthenticated, stationController.getAll);
 
         router.route('/station/:id_station')
-            .get(ensureAuthenticated, stationController.getById);
+            .get(ensureAuthenticated, stationController.getById)
+            .put(ensureAuthenticated, stationController.update);
 
         router.route('/bike')
             .get(ensureAuthenticated, bikeController.getAll);
 
+        router.route('/bike/:id_bike')
+            .get(ensureAuthenticated, bikeController.getById)
+            .put(ensureAuthenticated, bikeController.update);
+
         router.route('/promotion')
             .get(ensureAuthenticated, promotionController.getAll);
 
+        router.route('/promotion/:id_promotion')
+            .get(ensureAuthenticated, promotionController.getById)
+            .put(ensureAuthenticated, promotionController.update);
+
         router.route('/package')
             .get(ensureAuthenticated, packageController.getAll);
+
+        router.route('/package/:id_package')
+            .get(ensureAuthenticated, packageController.getById)
+            .put(ensureAuthenticated, packageController.update);
     };
 })();

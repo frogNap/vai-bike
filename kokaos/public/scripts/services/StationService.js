@@ -10,6 +10,9 @@
             },
             getById: function(id) {
                 return $http.get(BASE_API_ADDRESS + '/station/' + id);
+            },
+            update: function(id, station){
+                return $http.put(BASE_API_ADDRESS + '/station/' + id, station);
             }
         };
     }

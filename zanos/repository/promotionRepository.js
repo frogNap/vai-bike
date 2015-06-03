@@ -33,6 +33,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            update: function(id,descricao,desconto){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('update promocao set descricao = ?, desconto = ? where id = ?', [descricao, desconto, id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

@@ -33,6 +33,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            update: function(id,descricao,premio){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('update pacote set descricao = ?, premio = ? where id = ?', [descricao, premio, id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

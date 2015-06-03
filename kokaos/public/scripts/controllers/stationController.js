@@ -2,9 +2,10 @@
 
     'use strict';
 
-    function stationEditController($scope, StationService, stationId, $modalInstance) {
+    function stationEditController($scope, StationService, stationId, $modalInstance,AlertService) {
 
         $scope.station = {};
+        $scope.station_id = 0;
 
         StationService.getById(stationId)
             .success(function(station) {
@@ -18,10 +19,16 @@
         };
 
         $scope.save = function() {
-
             console.log('SAAAAVE MEEEE!!!');
             $modalInstance.close();
         }
+
+        $scope.updateStation = function () {
+            StationService.update(stationId, $scope.station);
+            AlertService.addSuccess('Estacao atualizada com sucesso!');
+            $modalInstance.dismiss('cancel');
+        };
+
     }
 
     function stationCtrl($scope, StationService, $modal) {

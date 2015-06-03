@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <th>Edit</th>
+        <th>ID</th>
         <th>Descri&ccedil;&atilde;o</th>
         <th>Premio</th>
         <th>Promoção Relacionada</th>
@@ -10,11 +11,11 @@
     <tbody>
     <tr ng-repeat="package in packages">
         <td>
-            <button class="btn">
+            <button class="btn" ng-click="editPackage(package.id)">
                 <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
             </button>
         </td>
-        <td style="display: none">{{ package.id }}</td>
+        <td>{{ package.id }}</td>
         <td>{{ package.descricao }}</td>
         <td>{{ package.premio }}</td>
         <td>{{ package.nome_promocao }}</td>

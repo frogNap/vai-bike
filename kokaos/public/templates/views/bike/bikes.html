@@ -1,0 +1,38 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Edit</th>
+        <th>ID</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Data aquisi&ccedil;&atilde;o</th>
+        <th>Quilometragem</th>
+        <th>Esta&ccedil;&atilde;o Atual</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="bike in bikes">
+        <td>
+            <button class="btn" ng-click="editBike(bike.id)">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+            </button>
+        </td>
+        <td>{{ bike.id }}</td>
+        <td>{{ bike.marca }}</td>
+        <td>{{ bike.modelo }}</td>
+        <td>{{ bike.data_aquisicao }}</td>
+        <td>{{ bike.quilometragem }}</td>
+        <td>{{ bike.nome_estacao }}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script>
+    $('#modalUpdateBikes').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var recipient = button.data('id');
+        var modal = $(this);
+        modal.find('.modal-title').text('Alterar os dados da bicicleta ' + recipient);
+    })
+</script>

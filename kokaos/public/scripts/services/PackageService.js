@@ -10,6 +10,12 @@
         return {
             getAll: function() {
                 return $http.get(BASE_API_ADDRESS + '/package');
+            },
+            getById: function(id) {
+                return $http.get(BASE_API_ADDRESS + '/package/' + id);
+            },
+            update: function(id, pack){
+                return $http.put(BASE_API_ADDRESS + '/package/' + id, pack);
             }
         };
     }

@@ -15,6 +15,18 @@
 
                         res.send(result);
                     });
+            },
+            getById: function(req,res){
+                promotionRepository.getById(req.params.id_promotion)
+                    .then(function(result){
+                        res.send(result);
+                    });
+            },
+            update: function(req,res){
+                promotionRepository.update(req.body.id, req.body.descricao, req.body.desconto)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

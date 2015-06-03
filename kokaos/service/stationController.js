@@ -18,6 +18,12 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            update: function(req,res){
+                stationRepository.update(req.body.id, req.body.descricao)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

@@ -15,6 +15,18 @@
 
                         res.send(result);
                     });
+            },
+            getById: function(req,res){
+                bikeRepository.getById(req.params.id_bike)
+                    .then(function(result){
+                        res.send(result);
+                    });
+            },
+            update: function(req,res){
+                bikeRepository.update(req.body.id, req.body.marca, req.body.modelo, req.body.quilometragem)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

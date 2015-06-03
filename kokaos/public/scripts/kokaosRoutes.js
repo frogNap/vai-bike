@@ -36,17 +36,17 @@
                 resolve: { loggedIn: verifyLogin }
             })
             .when('/bike', {
-                templateUrl: '/templates/views/bikes.html',
+                templateUrl: '/templates/views/bike/bikes.html',
                 controller: 'BikeController',
                 resolve: { loggedIn: verifyLogin }
             })
             .when('/package', {
-                templateUrl: '/templates/views/package.html',
+                templateUrl: '/templates/views/package/package.html',
                 controller: 'PackageController',
                 resolve: { loggedIn: verifyLogin }
             })
             .when('/promotion', {
-                templateUrl: '/templates/views/promotion.html',
+                templateUrl: '/templates/views/promotion/promotion.html',
                 controller: 'PromotionController',
                 resolve: { loggedIn: verifyLogin }
             })

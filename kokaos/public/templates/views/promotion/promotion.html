@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <th>Edit</th>
+        <th>ID</th>
         <th>Descri&ccedil;&atilde;o</th>
         <th>Desconto</th>
     </tr>
@@ -9,11 +10,11 @@
     <tbody>
     <tr ng-repeat="promotion in promotions">
         <td>
-            <button class="btn">
+            <button class="btn" ng-click="editPromotion(promotion.id)">
                 <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
             </button>
         </td>
-        <td style="display: none">{{ promotion.id }}</td>
+        <td>{{ promotion.id }}</td>
         <td>{{ promotion.descricao }}</td>
         <td>{{ promotion.desconto }}</td>
     </tr>

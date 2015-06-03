@@ -15,6 +15,18 @@
 
                         res.send(result);
                     });
+            },
+            getById: function(req,res){
+                packageRepository.getById(req.params.id_package)
+                    .then(function(result){
+                        res.send(result);
+                    });
+            },
+            update: function(req,res){
+                packageRepository.update(req.body.id, req.body.descricao, req.body.premio)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

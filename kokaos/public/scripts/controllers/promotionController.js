@@ -5,7 +5,36 @@
 
     'use strict';
 
-    function promotionCtrl($scope,PromotionService) {
+    function promotionEditController($scope, PromotionService, promotionId, $modalInstance,AlertService) {
+
+        $scope.promotion = {};
+        $scope.promotion_id = 0;
+
+        PromotionService.getById(promotionId)
+            .success(function(promotion) {
+
+                $scope.promotion = promotion;
+            });
+
+        $scope.dismiss = function() {
+
+            $modalInstance.dismiss('cancel');
+        };
+
+        $scope.save = function() {
+            console.log('SAAAAVE MEEEE!!!');
+            $modalInstance.close();
+        }
+
+        $scope.updatePromotion = function () {
+            PromotionService.update(promotionId, $scope.promotion);
+            AlertService.addSuccess('Promocao atualizada com sucesso!');
+            $modalInstance.dismiss('cancel');
+        };
+
+    }
+
+    function promotionCtrl($scope,PromotionService, $modal) {
 
         $scope.promotions = [];
 
@@ -13,6 +42,25 @@
 
             $scope.promotions = result.data;
         });
+
+        $scope.editPromotion = function(promotionId) {
+
+            var modalInstance = $modal.open({
+                templateUrl: '../../templates/views/promotion/promotionEdit.html',
+                controller: promotionEditController,
+                resolve: {
+                    promotionId: function () {
+                        return promotionId;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function () {
+                console.log('CLOSED!');
+            }, function () {
+                console.log('DISMISSED!');
+            });
+        }
     }
 
     angular.module('kokaosApp.controllers').controller('PromotionController', promotionCtrl);

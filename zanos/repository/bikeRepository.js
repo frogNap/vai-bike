@@ -33,6 +33,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            update: function(id,marca, modelo,quilometragem){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('update bicicleta set marca = ?, modelo = ?, quilometragem = ? where id = ?', [marca,modelo,quilometragem, id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

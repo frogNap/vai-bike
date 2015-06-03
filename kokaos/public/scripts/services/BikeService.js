@@ -13,6 +13,9 @@
             },
             getById: function(){
                 return $http.get(BASE_API_ADDRESS + '/bike/id');
+            },
+            update: function(id, bike){
+                return $http.put(BASE_API_ADDRESS + '/bike/' + id, bike);
             }
         };
     }

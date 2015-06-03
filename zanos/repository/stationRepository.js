@@ -33,6 +33,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            update: function(id,descricao){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('update estacao set descricao = ? where id = ?', [descricao, id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };
