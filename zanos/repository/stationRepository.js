@@ -46,6 +46,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            save: function (descricao, lat, lng) {
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('insert into estacao (lat,lng,descricao) values(?,?,?)', [lat, lng, descricao], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

@@ -16,6 +16,9 @@
             },
             update: function(id, pack){
                 return $http.put(BASE_API_ADDRESS + '/package/' + id, pack);
+            },
+            add: function(pack){
+                return $http.put(BASE_API_ADDRESS + '/createPackage',pack);
             }
         };
     }

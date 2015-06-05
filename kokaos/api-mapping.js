@@ -56,12 +56,18 @@
             .get(ensureAuthenticated, stationController.getById)
             .put(ensureAuthenticated, stationController.update);
 
+        router.route('/createStation')
+            .put(ensureAuthenticated, stationController.add);
+
         router.route('/bike')
             .get(ensureAuthenticated, bikeController.getAll);
 
         router.route('/bike/:id_bike')
             .get(ensureAuthenticated, bikeController.getById)
             .put(ensureAuthenticated, bikeController.update);
+
+        router.route('/createBike')
+            .put(ensureAuthenticated, bikeController.add);
 
         router.route('/promotion')
             .get(ensureAuthenticated, promotionController.getAll);
@@ -70,11 +76,18 @@
             .get(ensureAuthenticated, promotionController.getById)
             .put(ensureAuthenticated, promotionController.update);
 
+        router.route('/createPromotion')
+            .put(ensureAuthenticated, promotionController.add);
+
         router.route('/package')
             .get(ensureAuthenticated, packageController.getAll);
 
         router.route('/package/:id_package')
             .get(ensureAuthenticated, packageController.getById)
             .put(ensureAuthenticated, packageController.update);
+
+        router.route('/createPackage')
+            .put(ensureAuthenticated, packageController.add);
+
     };
 })();

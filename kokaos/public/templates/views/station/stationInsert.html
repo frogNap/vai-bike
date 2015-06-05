@@ -1,0 +1,22 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="dismiss()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalUpdateStationsLabel">Criar nova esta&ccedil;&atilde;o</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label>Latitude</label>
+                <input type="text" class="form-control" ng-model="station.lat" />
+                <label>Longitude</label>
+                <input type="text" class="form-control" ng-model="station.lng" />
+                <label>Descri&ccedil;&atilde;o</label>
+                <input type="text" class="form-control" ng-model="station.descricao">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="dismiss()">Fechar</button>
+        <button type="button" class="btn btn-primary" ng-click="save()">Salvar altera&ccedil;&otilde;s</button>
+    </div>
+</div>

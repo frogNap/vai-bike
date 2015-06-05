@@ -11,11 +11,14 @@
             getAll: function() {
                 return $http.get(BASE_API_ADDRESS + '/bike');
             },
-            getById: function(){
-                return $http.get(BASE_API_ADDRESS + '/bike/id');
+            getById: function(id){
+                return $http.get(BASE_API_ADDRESS + '/bike/' + id);
             },
             update: function(id, bike){
                 return $http.put(BASE_API_ADDRESS + '/bike/' + id, bike);
+            },
+            add: function(bike){
+                return $http.put(BASE_API_ADDRESS + '/createBike',bike);
             }
         };
     }

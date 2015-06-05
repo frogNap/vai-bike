@@ -27,6 +27,12 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            add: function (req,res) {
+                promotionRepository.save(req.body.descricao,req.body.desconto)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };
