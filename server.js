@@ -4,6 +4,10 @@
 
     var express = require('express');
     var mysql = require('mysql');
+    var cartoDb = require('cartodb');
+    var cartoDbConfig = require('./cartodb_config');
+
+    console.log(cartoDbConfig);
 
     var kokaosApp = express();
     var iunaApp = express();
@@ -17,7 +21,9 @@
         database: process.env.DB_NAME || 'vai_bike'
     });
 
-    var dbHandler = require('./dbHandler')(pool);
+    var cartoDbClient = new cartoDb({user: cartoDbConfig.USER, api_key: cartoDbConfig.API_KEY});
+
+    var dbHandler = require('./dbHandler')(pool, cartoDbClient);
 
     require('./kokaos/app_start')(kokaosApp, dbHandler);
     require('./iuna/app_start')(iunaApp, dbHandler);
