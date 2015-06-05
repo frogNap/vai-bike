@@ -34,7 +34,7 @@
                     });
                 });
             },
-            update: function(id,marca, modelo,quilometragem){
+            update: function(id, marca, modelo, quilometragem){
 
                 return dbHandler.queryFromPool(function(deferred, connection) {
 
