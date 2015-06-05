@@ -25,7 +25,7 @@
 
                 return dbHandler.queryFromPool(function(deferred, connection) {
 
-                    connection.query('SELECT * FROM bicicleta where id = ?', [id], function(queryError, rows) {
+                    connection.query('SELECT b.*, (select e.descricao from estacao e where e.id = b.estacao_id) as nome_estacao  FROM bicicleta b where b.id = ?', [id], function(queryError, rows) {
 
                         if(queryError)
                             deferred.reject(queryError);
@@ -39,6 +39,19 @@
                 return dbHandler.queryFromPool(function(deferred, connection) {
 
                     connection.query('update bicicleta set marca = ?, modelo = ?, quilometragem = ? where id = ?', [marca,modelo,quilometragem, id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
+            },
+            save: function (marca, modelo, data_aquisicao, quilometragem, estacao_id) {
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('insert into bicicleta (marca,modelo,data_aquisicao,quilometragem,estacao_id) values(?,?,?,?,?)', [marca, modelo, data_aquisicao,quilometragem,estacao_id], function(queryError, rows) {
 
                         if(queryError)
                             deferred.reject(queryError);

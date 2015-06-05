@@ -46,6 +46,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            save: function (descricao, desconto) {
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('insert into promocao (descricao,desconto) values(?,?)', [descricao,desconto], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

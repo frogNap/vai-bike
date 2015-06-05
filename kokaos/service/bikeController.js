@@ -27,6 +27,12 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            add: function (req,res) {
+                bikeRepository.save(req.body.marca,req.body.modelo,req.body.data_aquisicao,req.body.quilometragem,req.body.estacao_id)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

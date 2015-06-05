@@ -16,6 +16,9 @@
             },
             update: function(id, promotion){
                 return $http.put(BASE_API_ADDRESS + '/promotion/' + id, promotion);
+            },
+            add: function(promotion){
+                return $http.put(BASE_API_ADDRESS + '/createPromotion',promotion);
             }
         };
     }

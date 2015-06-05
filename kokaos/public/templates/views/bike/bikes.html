@@ -1,3 +1,6 @@
+<button class="btn" ng-click="insertBike()">
+    Nova Bicicleta&nbsp;&nbsp;<span class="glyphicon glyphicon-plus-sign"></span>
+</button>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -7,7 +10,7 @@
         <th>Modelo</th>
         <th>Data aquisi&ccedil;&atilde;o</th>
         <th>Quilometragem</th>
-        <th>Esta&ccedil;&atilde;o Atual</th>
+        <th>Esta&ccedil;&atilde;o Padr&atilde;o</th>
     </tr>
     </thead>
     <tbody>
@@ -26,13 +29,3 @@
     </tr>
     </tbody>
 </table>
-
-
-<script>
-    $('#modalUpdateBikes').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var recipient = button.data('id');
-        var modal = $(this);
-        modal.find('.modal-title').text('Alterar os dados da bicicleta ' + recipient);
-    })
-</script>

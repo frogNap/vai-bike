@@ -24,6 +24,12 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            add: function (req,res) {
+                stationRepository.save(req.body.descricao,req.body.lat,req.body.lng)
+                    .then(function(result){
+                        res.send(result);
+                    });
             }
         };
     };

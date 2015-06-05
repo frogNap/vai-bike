@@ -2,19 +2,28 @@
 
     'use strict';
 
-    function bikeEditController($scope, BikeService, bikeId, $modalInstance,AlertService) {
+    function bikeEditController($scope, BikeService, bikeId, $modalInstance, AlertService, $route, StationService) {
 
         $scope.bike = {};
         $scope.bike_id = 0;
+        $scope.stations = [];
+        $scope.selected_station = {};
 
         BikeService.getById(bikeId)
             .success(function(bike) {
-
                 $scope.bike = bike;
             });
 
-        $scope.dismiss = function() {
+        StationService.getAll().then(function(result) {
+            $scope.stations = result.data;
+        });
 
+        StationService.getById($scope.bike.estacao_id)
+            .success(function(station) {
+                $scope.selected_station = station;
+            });
+
+        $scope.dismiss = function() {
             $modalInstance.dismiss('cancel');
         };
 
@@ -25,10 +34,26 @@
 
         $scope.updateBike = function () {
             BikeService.update(bikeId, $scope.bike);
-            AlertService.addSuccess('Bicleta atualizada com sucesso!');
+            AlertService.addSuccess('Bicicleta atualizada com sucesso!');
+            $modalInstance.dismiss('cancel');
+            $route.reload();
+        };
+    }
+
+    function bikeInsertController($scope, BikeService, $modalInstance, AlertService, $route) {
+
+        $scope.bike = {};
+
+        $scope.dismiss = function() {
             $modalInstance.dismiss('cancel');
         };
 
+        $scope.save = function() {
+            BikeService.add($scope.bike)
+            AlertService.addSuccess('Bicicleta cadastrada com sucesso!');
+            $modalInstance.dismiss('cancel');
+            $route.reload();
+        }
     }
 
     function bikeCtrl($scope,BikeService, $modal) {
@@ -51,6 +76,20 @@
                         return bikeId;
                     }
                 }
+            });
+
+            modalInstance.result.then(function () {
+                console.log('CLOSED!');
+            }, function () {
+                console.log('DISMISSED!');
+            });
+        }
+
+        $scope.insertBike = function() {
+
+            var modalInstance = $modal.open({
+                templateUrl: '../../templates/views/bike/bikeInsert.html',
+                controller: bikeInsertController
             });
 
             modalInstance.result.then(function () {

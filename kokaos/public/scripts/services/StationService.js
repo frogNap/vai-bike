@@ -13,6 +13,9 @@
             },
             update: function(id, station){
                 return $http.put(BASE_API_ADDRESS + '/station/' + id, station);
+            },
+            add: function(station){
+                return $http.put(BASE_API_ADDRESS + '/createStation',station);
             }
         };
     }

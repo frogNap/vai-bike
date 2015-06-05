@@ -46,6 +46,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            save: function (descricao, premio, id_promocao) {
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('insert into pacote (descricao,premio,id_promocao) values(?,?,?)', [descricao,premio,id_promocao], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

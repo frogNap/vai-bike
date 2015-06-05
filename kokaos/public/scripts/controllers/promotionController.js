@@ -5,7 +5,7 @@
 
     'use strict';
 
-    function promotionEditController($scope, PromotionService, promotionId, $modalInstance,AlertService) {
+    function promotionEditController($scope, PromotionService, promotionId, $modalInstance,AlertService,$route) {
 
         $scope.promotion = {};
         $scope.promotion_id = 0;
@@ -30,8 +30,25 @@
             PromotionService.update(promotionId, $scope.promotion);
             AlertService.addSuccess('Promocao atualizada com sucesso!');
             $modalInstance.dismiss('cancel');
+            $route.reload();
         };
 
+    }
+
+    function promotionInsertController($scope, PromotionService, $modalInstance,AlertService, $route) {
+
+        $scope.promotion = {};
+
+        $scope.dismiss = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+        $scope.save = function() {
+            PromotionService.add($scope.promotion)
+            AlertService.addSuccess('Promocao cadastrada com sucesso!');
+            $modalInstance.dismiss('cancel');
+            $route.reload();
+        }
     }
 
     function promotionCtrl($scope,PromotionService, $modal) {
@@ -59,6 +76,20 @@
                 console.log('CLOSED!');
             }, function () {
                 console.log('DISMISSED!');
+            });
+        }
+
+        $scope.insertPromotion = function() {
+
+            var modalInstance = $modal.open({
+                templateUrl: '../../templates/views/promotion/promotionInsert.html',
+                controller: promotionInsertController
+            });
+
+            modalInstance.result.then(function () {
+                console.log('closed!');
+            }, function () {
+                console.log('dismissed!');
             });
         }
     }
