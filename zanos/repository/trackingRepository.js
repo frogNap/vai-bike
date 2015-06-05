@@ -9,7 +9,7 @@
                 return dbHandler.queryFromCartoDb(function(deferred, cartoDbClient) {
 
                     var query = 'INSERT INTO {table} (bike_id, longitude, latitude, the_geom) ' +
-                        'VALUES ({bike_id}, {longitude}, {latitude}, ST_SetSRID(ST_Point({logitude}, {latitude}), 4326))';
+                        'VALUES ({bike_id}, {longitude}, {latitude}, ST_SetSRID(ST_Point({longitude}, {latitude}), 4326))';
 
                     var params = {
                         table: 'bike_tracking',
