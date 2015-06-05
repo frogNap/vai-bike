@@ -51,7 +51,7 @@
         }
     }
 
-    function promotionCtrl($scope,PromotionService, $modal) {
+    function promotionCtrl($scope,PromotionService, $modal,AlertService, $route) {
 
         $scope.promotions = [];
 
@@ -92,6 +92,12 @@
                 console.log('dismissed!');
             });
         }
+
+        $scope.deletePromotion = function(promotionId){
+            PromotionService.delete(promotionId);
+            AlertService.addSuccess('Promocao excluida com sucesso!');
+            $route.reload();
+        };
     }
 
     angular.module('kokaosApp.controllers').controller('PromotionController', promotionCtrl);

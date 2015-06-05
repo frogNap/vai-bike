@@ -16,6 +16,9 @@
             },
             add: function(station){
                 return $http.put(BASE_API_ADDRESS + '/createStation',station);
+            },
+            delete: function (id) {
+                return $http.delete(BASE_API_ADDRESS + '/deleteStation/' + id);
             }
         };
     }

@@ -30,6 +30,11 @@
                 controller: 'DashboardController',
                 resolve: { loggedIn: verifyLogin }
             })
+            .when('/administrator', {
+                templateUrl: '/templates/views/administrator/administrator.html',
+                controller: 'AdministratorController',
+                resolve: { loggedIn: verifyLogin }
+            })
             .when('/station', {
                 templateUrl: '/templates/views/station/station.html',
                 controller: 'StationController',

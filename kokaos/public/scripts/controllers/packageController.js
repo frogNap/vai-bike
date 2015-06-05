@@ -51,7 +51,7 @@
         }
     }
 
-    function packageCtrl($scope,PackageService, $modal) {
+    function packageCtrl($scope,PackageService, $modal,AlertService, $route) {
 
         $scope.packages = [];
 
@@ -93,6 +93,11 @@
             });
         }
 
+        $scope.deletePackage = function(packageId){
+            PackageService.delete(packageId);
+            AlertService.addSuccess('Pacote excluido com sucesso!');
+            $route.reload();
+        };
     }
 
     angular.module('kokaosApp.controllers').controller('PackageController', packageCtrl);

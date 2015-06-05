@@ -49,6 +49,16 @@
         router.route('/administrator')
             .get(ensureAuthenticated, administratorController.getAll);
 
+        router.route('/administrator/:id_administrator')
+            .get(ensureAuthenticated, administratorController.getById)
+            .put(ensureAuthenticated, administratorController.update);
+
+        router.route('/createAdministrator')
+            .put(ensureAuthenticated, administratorController.add);
+
+        router.route('/deleteAdministrator/:id_administrator')
+            .delete(ensureAuthenticated, administratorController.delete);
+
         router.route('/station')
             .get(ensureAuthenticated, stationController.getAll);
 
@@ -58,6 +68,9 @@
 
         router.route('/createStation')
             .put(ensureAuthenticated, stationController.add);
+
+        router.route('/deleteStation/:id_station')
+            .delete(ensureAuthenticated, stationController.delete);
 
         router.route('/bike')
             .get(ensureAuthenticated, bikeController.getAll);
@@ -69,6 +82,9 @@
         router.route('/createBike')
             .put(ensureAuthenticated, bikeController.add);
 
+        router.route('/deleteBike/:id_bike')
+            .delete(ensureAuthenticated, bikeController.delete);
+
         router.route('/promotion')
             .get(ensureAuthenticated, promotionController.getAll);
 
@@ -79,6 +95,9 @@
         router.route('/createPromotion')
             .put(ensureAuthenticated, promotionController.add);
 
+        router.route('/deletePromotion/:id_promotion')
+            .delete(ensureAuthenticated, promotionController.delete);
+
         router.route('/package')
             .get(ensureAuthenticated, packageController.getAll);
 
@@ -88,6 +107,9 @@
 
         router.route('/createPackage')
             .put(ensureAuthenticated, packageController.add);
+
+        router.route('/deletePackage/:id_package')
+            .delete(ensureAuthenticated, packageController.delete);
 
     };
 })();

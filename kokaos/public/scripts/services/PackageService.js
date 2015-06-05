@@ -19,6 +19,9 @@
             },
             add: function(pack){
                 return $http.put(BASE_API_ADDRESS + '/createPackage',pack);
+            },
+            delete: function (id) {
+                return $http.delete(BASE_API_ADDRESS + '/deletePackage/' + id);
             }
         };
     }

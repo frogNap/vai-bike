@@ -43,6 +43,45 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            update: function(id,login,senha,nome,departamento,email){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('update administrador set login = ?, nome = ?, departamento = ?, email = ? where id = ?', [login,nome,departamento,email,id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
+            },
+            save: function (login,senha, nome,departamento, email) {
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('insert into administrador (login,senha,nome,departamento,email) values(?,?,?,?,?)', [login,senha,nome,departamento,email], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
+            },
+            delete: function(id){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('delete from administrador where id = ?', [id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

@@ -33,6 +33,13 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            delete: function(req,res){
+                console.log(req.body);
+                bikeRepository.delete(req.params.id_bike)
+                    .then(function(result){
+                        res.send(result);
+                    })
             }
         };
     };
