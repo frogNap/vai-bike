@@ -8,8 +8,8 @@
             createTrackingData: function(trackingData) {
                 return dbHandler.queryFromCartoDb(function(deferred, cartoDbClient) {
 
-                    var query = 'INSERT INTO {table} (bike_id, longitude, latitude, the_geom) ' +
-                        'VALUES ({bike_id}, {longitude}, {latitude}, ST_SetSRID(ST_Point({logitude}, {latitude}), 4326))';
+                    var query = 'UPDATE {table} set latitude = {latitude}, longitude = {longitude}, the_geom = ST_SetSRID(ST_Point({longitude}, {latitude}), 4326) ' +
+                        'where bike_id = {bike_id}';
 
                     var params = {
                         table: 'bike_tracking',
