@@ -9,6 +9,14 @@
                 templateUrl: '/templates/views/welcome.html',
                 controller: 'WelcomeController'
             })
+            .when('/promotions',{
+                templateUrl: '/templates/views/promotions.html',
+                controller: 'PromotionController'
+            })
+            .when('/packages',{
+                templateUrl: '/templates/views/packages.html',
+                controller: 'PackageController'
+            })
             .otherwise({
                 redirectTo: 'welcome'
             });
