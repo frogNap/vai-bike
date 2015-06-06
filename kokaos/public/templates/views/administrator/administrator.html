@@ -1,0 +1,32 @@
+<button class="btn" ng-click="insertAdministrator()">
+    Novo Administrador&nbsp;&nbsp;<span class="glyphicon glyphicon-plus-sign"></span>
+</button>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Edit</th>
+        <th>Id</th>
+        <th>Login</th>
+        <th>Nome</th>
+        <th>Departamento</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="administrator in administrators">
+        <td>
+            <button class="btn" ng-click="editAdministrator(administrator.id)">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Editar
+            </button>
+            <button class="btn" ng-click="deleteAdministrator(administrator.id)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
+        <td>{{ administrator.id }}</td>
+        <td>{{ administrator.login }}</td>
+        <td>{{ administrator.nome }}</td>
+        <td>{{ administrator.departamento }}</td>
+        <td>{{ administrator.email }}</td>
+    </tr>
+    </tbody>
+</table>

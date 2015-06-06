@@ -19,6 +19,9 @@
             },
             add: function(bike){
                 return $http.put(BASE_API_ADDRESS + '/createBike',bike);
+            },
+            delete: function (id) {
+                return $http.delete(BASE_API_ADDRESS + '/deleteBike/' + id);
             }
         };
     }

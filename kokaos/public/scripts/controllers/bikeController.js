@@ -56,7 +56,7 @@
         }
     }
 
-    function bikeCtrl($scope,BikeService, $modal) {
+    function bikeCtrl($scope,BikeService, $modal, AlertService, $route) {
 
         $scope.listBikes = 'Lista de bikes';
         $scope.bikes = [];
@@ -98,6 +98,12 @@
                 console.log('DISMISSED!');
             });
         }
+
+        $scope.deleteBike = function(bikeId){
+            BikeService.delete(bikeId);
+            AlertService.addSuccess('Bicicleta excluida com sucesso!');
+            $route.reload();
+        };
     }
 
     angular.module('kokaosApp.controllers').controller('BikeController', bikeCtrl);

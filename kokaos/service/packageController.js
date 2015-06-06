@@ -33,6 +33,13 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            delete: function(req,res){
+                console.log(req.body);
+                packageRepository.delete(req.params.id_package)
+                    .then(function(result){
+                        res.send(result);
+                    })
             }
         };
     };

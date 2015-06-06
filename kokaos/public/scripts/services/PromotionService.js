@@ -19,6 +19,9 @@
             },
             add: function(promotion){
                 return $http.put(BASE_API_ADDRESS + '/createPromotion',promotion);
+            },
+            delete: function (id) {
+                return $http.delete(BASE_API_ADDRESS + '/deletePromotion/' + id);
             }
         };
     }

@@ -30,6 +30,13 @@
                     .then(function(result){
                         res.send(result);
                     });
+            },
+            delete: function(req,res){
+                console.log(req.body);
+                stationRepository.delete(req.params.id_station)
+                    .then(function(result){
+                        res.send(result);
+                    })
             }
         };
     };

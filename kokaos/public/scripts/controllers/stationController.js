@@ -27,7 +27,6 @@
             $modalInstance.dismiss('cancel');
             $route.reload();
         };
-
     }
 
     function stationInsertController($scope, StationService, $modalInstance,AlertService, $route) {
@@ -46,7 +45,7 @@
         }
     }
 
-    function stationCtrl($scope, StationService, $modal) {
+    function stationCtrl($scope, StationService, $modal,AlertService, $route) {
 
         $scope.stationName = 'Estação';
         $scope.stations = [];
@@ -87,6 +86,12 @@
                 console.log('dismissed!');
             });
         }
+
+        $scope.deleteStation = function(stationId){
+            StationService.delete(stationId);
+            AlertService.addSuccess('Estacao excluida com sucesso!');
+            $route.reload();
+        };
     }
 
     angular.module('kokaosApp.controllers').controller('StationController', stationCtrl);

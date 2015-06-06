@@ -59,6 +59,19 @@
                             deferred.resolve(rows[0]);
                     });
                 });
+            },
+            delete: function(id){
+
+                return dbHandler.queryFromPool(function(deferred, connection) {
+
+                    connection.query('delete from estacao where id = ?', [id], function(queryError, rows) {
+
+                        if(queryError)
+                            deferred.reject(queryError);
+                        else
+                            deferred.resolve(rows[0]);
+                    });
+                });
             }
         };
     };

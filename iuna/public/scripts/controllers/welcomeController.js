@@ -2,7 +2,7 @@
 
     'use strict';
 
-    function welcomeCtrl($scope) {
+    function welcomeCtrl($scope, $location) {
 
         function createMap() {
 
@@ -11,6 +11,11 @@
                 shareable: false
             });
         }
+
+
+        $scope.goPromotions = function() {
+            $location.url = '#/promotions';
+        };
 
         createMap();
     }
