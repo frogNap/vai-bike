@@ -7,8 +7,6 @@
     var cartoDb = require('cartodb');
     var cartoDbConfig = require('./cartodb_config');
 
-    console.log(cartoDbConfig);
-
     var kokaosApp = express();
     var iunaApp = express();
 
