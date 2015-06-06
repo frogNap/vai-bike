@@ -20,7 +20,21 @@ body {
 }
 
 .alert-container {
-    width: 50%;
+    z-index: 10000;
+    position: absolute;
+    width: 100%;
     margin: auto;
     margin-top: 10px;
+}
+
+.alert-container div {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+#map {
+    height: 500px;
+    width: 900px;
+    margin: auto;
 }

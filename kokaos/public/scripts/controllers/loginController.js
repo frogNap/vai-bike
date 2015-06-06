@@ -9,6 +9,8 @@
             password: undefined
         };
 
+        $scope.setOnLoginScreen(true);
+
         $scope.invalidGrant = false;
 
         $scope.login = function() {
@@ -16,6 +18,7 @@
             LoginService.attemptLogin($scope.credentials)
                 .success(function() {
 
+                    $scope.setOnLoginScreen(false);
                     $location.path('/dashboard');
                 })
                 .error(function() {
