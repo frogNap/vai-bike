@@ -1,5 +1,7 @@
 body {
     background-color: rgb(245, 245, 245);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .login-container {
@@ -31,6 +33,124 @@ body {
     width: 50%;
     margin: auto;
     text-align: center;
+}
+
+.menu-container {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #8BC34A;
+    box-shadow: 3px 3px 3px #ccc;
+    margin-bottom: 15px;
+}
+
+.menu-switch {
+    margin: 10px 15px 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: rgb(235, 235, 235);
+}
+
+.menu-switch:hover {
+    color: #d0d0d0;
+}
+
+.menu-wrapper {
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: #AED581;
+    box-shadow: 3px 3px 3px #ccc;
+    z-index: 20;
+    height: 100%;
+}
+
+.menu-items-list {
+    list-style: none;
+    padding: 15px;
+    width: 206px;
+}
+
+.menu-wrapper.ng-hide {
+    animation-name: hideLeft;
+    -webkit-animation-name: hideLeft;
+
+    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+
+    transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+}
+
+@keyframes hideLeft {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-206px);
+    }
+}
+
+@-webkit-keyframes hideLeft {
+    0% {
+        transform: translate(-206px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.stretchRight{
+    animation-name: stretchRight;
+    -webkit-animation-name: stretchRight;
+
+    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+
+    transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+}
+
+@keyframes stretchRight {
+    0% {
+        transform: translate(-206px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@-webkit-keyframes stretchRight {
+    0% {
+        transform: translate(-206px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.menu-item:hover {
+    background-color: rgba(139, 195, 74, 0.47);
 }
 
 #map {

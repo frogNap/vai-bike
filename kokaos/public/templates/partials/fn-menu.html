@@ -1,0 +1,25 @@
+<div class="menu-container" ng-init="showMenu = false">
+    <i class="fa fa-bars menu-switch" ng-click="showMenu = !showMenu"></i>
+    <div class="menu-wrapper stretchRight" ng-show="showMenu">
+        <ul class="menu-items-list">
+            <li class="menu-item" ng-click="changeView('/dashboard')">
+                <label>Dashboard</label>
+            </li>
+            <li class="menu-item" ng-click="changeView('/administrator')">
+                <label>Administrador</label>
+            </li>
+            <li class="menu-item" ng-click="changeView('/station')">
+                <label>Esta&ccedil;&atilde;o</label>
+            </li>
+            <li class="menu-item" ng-click="changeView('/bike')">
+                <label>Bicicleta</label>
+            </li>
+            <li class="menu-item" ng-click="changeView('/package')">
+                <label>Pacote</label>
+            </li>
+            <li class="menu-item" ng-click="changeView('/promotion')">
+                <label>Promo&ccedil;&atilde;o</label>
+            </li>
+        </ul>
+    </div>
+</div>
