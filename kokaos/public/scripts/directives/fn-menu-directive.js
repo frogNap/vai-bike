@@ -2,7 +2,7 @@
 
     'use strict';
 
-    function menuDirective($location) {
+    function menuDirective($location, LoginService) {
 
         return {
             restrict: 'E',
@@ -13,10 +13,19 @@
 
                     $location.url(newView);
                     scope.showMenu = false;
-                }
+                };
+
+                scope.logout = function() {
+
+                    LoginService.logout()
+                        .success(function() {
+
+                            $location.url('/login');
+                        });
+                };
             }
         };
     }
 
-    angular.module('kokaosApp.directives').directive('fnMenu', ['$location', menuDirective]);
+    angular.module('kokaosApp.directives').directive('fnMenu', ['$location', 'LoginService', menuDirective]);
 })();
