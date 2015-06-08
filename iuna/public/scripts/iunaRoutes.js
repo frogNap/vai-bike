@@ -7,15 +7,18 @@
         $routeProvider.
             when('/welcome', {
                 templateUrl: '/templates/views/welcome.html',
-                controller: 'WelcomeController'
+                controller: 'WelcomeController',
+                activeTab: 'welcome'
             })
             .when('/promotions',{
                 templateUrl: '/templates/views/promotions.html',
-                controller: 'PromotionController'
+                controller: 'PromotionController',
+                activeTab: 'promotion'
             })
             .when('/packages',{
                 templateUrl: '/templates/views/packages.html',
-                controller: 'PackageController'
+                controller: 'PackageController',
+                activeTab: 'packages'
             })
             .otherwise({
                 redirectTo: 'welcome'

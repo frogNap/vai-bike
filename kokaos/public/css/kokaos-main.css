@@ -2,7 +2,7 @@ body {
     background-color: rgb(245, 245, 245);
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: "Roboto Light";
+    font-family: "Roboto Light", sans-serif;
 }
 
 .login-container {

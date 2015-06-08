@@ -23,5 +23,5 @@
         };
     }
 
-    angular.module('kokaosApp.services').service('PackageService', ['$http', 'BASE_API_ADDRESS', packageService]);
+    angular.module('iunaApp.services').service('PackageService', ['$http', 'BASE_API_ADDRESS', packageService]);
 })();

@@ -9,5 +9,5 @@
         });
     }
 
-    angular.module('kokaosApp.controllers').controller('PackageController', packageCtrl);
+    angular.module('iunaApp.controllers').controller('PackageController', packageCtrl);
 })();

@@ -9,5 +9,5 @@
         });
     }
 
-    angular.module('kokaosApp.controllers').controller('PromotionController', promotionCtrl);
+    angular.module('iunaApp.controllers').controller('PromotionController', promotionCtrl);
 })();

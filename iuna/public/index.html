@@ -15,14 +15,28 @@
         <script src="libs/angularJS/angular-route.min.js"></script>
         <script src="libs/angular-ui/angular-ui.min.js"></script>
 
-        <script src="scripts/services/PackageService.js"></script>
-
         <script src="scripts/iunaApp.js"></script>
         <script src="scripts/iunaRoutes.js"></script>
+
+        <script src="scripts/controllers/applicationController.js"></script>
         <script src="scripts/controllers/welcomeController.js"></script>
         <script src="scripts/controllers/packageController.js"></script>
+
+        <script src="scripts/services/PackageService.js"></script>
     </head>
-    <body>
+    <body ng-controller="ApplicationController">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="menu">
+                <ul>
+                    <li ng-click="changeView('/welcome')" ng-class="{selected: $route.current.activeTab == 'welcome'}">Onde alugar</li>
+                    <li ng-click="changeView('/packages')" ng-class="{selected: $route.current.activeTab== 'packages'}">Pacotes</li>
+                    <li ng-click="changeView('/how')" ng-class="{selected: $route.current.activeTab == 'how'}">Como funciona</li>
+                    <li ng-click="changeView('/whe')" ng-class="{selected: $route.current.activeTab == 'whe'}">Quem somos</li>
+                    <li ng-click="changeView('/contact')" ng-class="{selected: $route.current.activeTab == 'contact'}">Contato</li>
+                </ul>
+            </div>
+        </div>
         <div class="container" ng-view></div>
     </body>
 </html>
