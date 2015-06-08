@@ -2,6 +2,7 @@ body {
     background-color: rgb(245, 245, 245);
     overflow-x: hidden;
     overflow-y: scroll;
+    font-family: "Roboto Light";
 }
 
 .login-container {
@@ -144,17 +145,48 @@ body {
     display: block;
     width: 100%;
     padding: 20px;
-    cursor: pointer;
     border-radius: 6px;
     text-align: center;
+    font-size: 1.3em;
+}
+
+.menu-item label{
+    cursor: pointer;
 }
 
 .menu-item:hover {
     background-color: rgba(139, 195, 74, 0.47);
+    cursor: pointer;
+}
+
+.mapContainer {
+    text-align: center;
+}
+
+.mapContainer label {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #626262;
 }
 
 #map {
     height: 500px;
     width: 900px;
     margin: auto;
+}
+
+.tableauPlaceholder {
+    width: 804px;
+    height: 669px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+}
+
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('../fonts/Roboto-Light.ttf');
 }
