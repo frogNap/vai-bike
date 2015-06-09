@@ -19,8 +19,9 @@ ul {
     height: 120px;
     width: 1000px;
     margin: auto;
-    background-color: rgba(255, 0, 0, 0.21);
     margin-top: 15px;
+    font-size: 8em;
+    text-align: center;
 }
 
 .menu {
