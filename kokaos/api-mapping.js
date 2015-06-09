@@ -101,7 +101,7 @@
             .delete(ensureAuthenticated, promotionController.delete);
 
         router.route('/package')
-            .get(ensureAuthenticated, packageController.getAll);
+            .get(packageController.getAll);
 
         router.route('/package/:id_package')
             .get(ensureAuthenticated, packageController.getById)

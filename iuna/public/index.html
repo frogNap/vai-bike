@@ -5,6 +5,7 @@
         <title>Vai de Bike</title>
         <link rel="icon" type="image/ico" href="images/bike.ico">
         <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="css/iuna-main.css" rel="stylesheet">
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css" />
 
@@ -20,9 +21,6 @@
 
         <script src="scripts/controllers/applicationController.js"></script>
         <script src="scripts/controllers/welcomeController.js"></script>
-        <script src="scripts/controllers/packageController.js"></script>
-
-        <script src="scripts/services/PackageService.js"></script>
     </head>
     <body ng-controller="ApplicationController">
         <div class="header">
@@ -30,9 +28,8 @@
             <div class="menu">
                 <ul>
                     <li ng-click="changeView('/welcome')" ng-class="{selected: $route.current.activeTab == 'welcome'}">Onde alugar</li>
-                    <li ng-click="changeView('/packages')" ng-class="{selected: $route.current.activeTab== 'packages'}">Pacotes</li>
                     <li ng-click="changeView('/how')" ng-class="{selected: $route.current.activeTab == 'how'}">Como funciona</li>
-                    <li ng-click="changeView('/whe')" ng-class="{selected: $route.current.activeTab == 'whe'}">Quem somos</li>
+                    <li ng-click="changeView('/who')" ng-class="{selected: $route.current.activeTab == 'who'}">Quem somos</li>
                     <li ng-click="changeView('/contact')" ng-class="{selected: $route.current.activeTab == 'contact'}">Contato</li>
                 </ul>
             </div>

@@ -9,16 +9,18 @@
                 templateUrl: '/templates/views/welcome.html',
                 controller: 'WelcomeController',
                 activeTab: 'welcome'
-            })
-            .when('/promotions',{
-                templateUrl: '/templates/views/promotions.html',
-                controller: 'PromotionController',
-                activeTab: 'promotion'
-            })
-            .when('/packages',{
-                templateUrl: '/templates/views/packages.html',
-                controller: 'PackageController',
-                activeTab: 'packages'
+            }).
+            when('/how', {
+                templateUrl: '/templates/views/how.html',
+                activeTab: 'how'
+            }).
+            when('/who', {
+                templateUrl: '/templates/views/who.html',
+                activeTab: 'who'
+            }).
+            when('/contact', {
+                templateUrl: '/templates/views/contact.html',
+                activeTab: 'contact'
             })
             .otherwise({
                 redirectTo: 'welcome'

@@ -6,9 +6,12 @@
     var mysql = require('mysql');
     var cartoDb = require('cartodb');
     var cartoDbConfig = require('./cartodb_config');
+    var cors = require('cors');
 
     var kokaosApp = express();
     var iunaApp = express();
+
+    kokaosApp.use(cors());
 
     var pool  = mysql.createPool({
         connectionLimit : 30,

@@ -5,6 +5,12 @@ body {
     font-family: "Roboto Light", sans-serif;
 }
 
+.container {
+    padding-left: 85px;
+    padding-right: 85px;
+    position: relative;
+}
+
 ul {
     list-style: none;
 }
@@ -36,6 +42,7 @@ ul {
     width: 175px;
     padding: 5px;
     font-size: 1.1em;
+    margin-right: 25px;
 }
 
 .menu li.selected {
@@ -61,6 +68,74 @@ ul {
     margin: auto;
     margin-bottom: 5px;
     border: 1px solid #D0CFCF;
+}
+
+.contact-info {
+    display: inline;
+    position: absolute;
+    left: 90px;
+    line-height: 2.2em;
+}
+
+.address {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.address i {
+    margin-right: 5px;
+    margin-top: 4px;
+}
+
+.telephone {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.telephone i {
+    margin-right: 5px;
+}
+
+.mail {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.mail i {
+    margin-right: 5px;
+}
+
+.location {
+    display: inline;
+    position: absolute;
+    top: 65px;
+    right: 90px;
+}
+
+.front {
+    display: inline;
+    position: relative;
+    top: 5px;
+}
+
+.front img {
+    width: 450px;
+}
+
+.who-description {
+    display: inline;
+    position: absolute;
+    margin-left: 20px;
+    padding-right: 65px;
+    font-size: 1.1em;
+}
+
+.how-works-description {
+    line-height: 2.8em;
+    font-size: 1.2em;
+    margin-left: 30px;
 }
 
 @font-face {
