@@ -183,6 +183,8 @@ body {
     height: 500px;
     width: 900px;
     margin: auto;
+    margin-bottom: 5px;
+    border: 1px solid #D0CFCF;
 }
 
 .tableauPlaceholder {
